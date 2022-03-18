@@ -13,7 +13,7 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 
-def _create_sample_file_at_path(
+def _create_dest_file_at_path(
     target_dir: pathlib.Path, sample_file_name: str, dest_filename: str
 ):
     """Copies the contents of the sample file to the destiantion file in the target directory."""
@@ -64,32 +64,32 @@ def main():
     target_dir_path = pathlib.Path(args.target_dir)
     if args.item == "rule":
         # A rule requires a python file, a rule file
-        _create_sample_file_at_path(
+        _create_dest_file_at_path(
             target_dir=target_dir_path,
             sample_file_name="sample_py.py",
             dest_filename=f"{args.file_name}.py",
         )
 
-        _create_sample_file_at_path(
+        _create_dest_file_at_path(
             target_dir=target_dir_path,
             sample_file_name="sample_rule.yml",
             dest_filename=f"{args.file_name}.yml",
         )
     elif args.item == "scheduled-rule":
         # A scheduled rule requires a python file, a scheduled_query and a scheduled_rule
-        _create_sample_file_at_path(
+        _create_dest_file_at_path(
             target_dir=target_dir_path,
             dest_filename=f"{args.file_name}.py",
             sample_file_name="sample_py.py",
         )
 
-        _create_sample_file_at_path(
+        _create_dest_file_at_path(
             target_dir=target_dir_path,
             dest_filename=f"{args.file_name}.yml",
             sample_file_name="sample_scheduled_rule.yml",
         )
 
-        _create_sample_file_at_path(
+        _create_dest_file_at_path(
             target_dir=target_dir_path,
             dest_filename=f"{args.file_name}_query.yml",
             sample_file_name="sample_query.yml",
