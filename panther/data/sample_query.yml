@@ -1,0 +1,12 @@
+AnalysisType: scheduled_query
+QueryName: ""
+Enabled: true
+Description: ""
+AthenaQuery: >
+  /* athena query not supported */ 
+  SELECT count(1)
+SnowflakeQuery: >
+  select * from changemeh;
+Schedule:
+  CronExpression: ""
+  TimeoutMinutes: 5

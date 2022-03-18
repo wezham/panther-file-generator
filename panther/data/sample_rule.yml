@@ -1,0 +1,13 @@
+AnalysisType: rule
+Filename: filename.py
+RuleID: RuleID
+DisplayName: DisplayName
+Enabled: true
+LogTypes: []
+Tags: []
+Severity: Medium
+Description: ""
+Reference: ""
+Runbook: ""
+SummaryAttributes: []
+Tests: []

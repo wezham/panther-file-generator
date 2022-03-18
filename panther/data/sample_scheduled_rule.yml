@@ -1,0 +1,11 @@
+AnalysisType: scheduled_rule
+Filename: sample_name.py
+RuleID: rule_id
+DisplayName: ""
+Description: ""
+Enabled: true
+Runbook: ""
+ScheduledQueries: []
+Tags: []
+Severity: Low
+Tests: []
