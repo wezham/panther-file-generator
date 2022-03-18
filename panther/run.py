@@ -45,7 +45,7 @@ def main():
         metavar="item-type",
         type=str,
         nargs="?",
-        help="The type of the of the detection you would like to create",
+        help="The type of the of the detection you would like to create [rule,scheduled-rule]",
         choices=["rule", "scheduled-rule"],
         required=True,
     )
