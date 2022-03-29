@@ -98,18 +98,16 @@ def main():
     target_dir_path = pathlib.Path(args.target_dir)
 
     if args.item == "rule":
-        # A rule requires a python file and a yaml file
-        file_types = [FileType.rule_py, FileType.rule_yml]
+        files_to_create = [FileType.rule_py, FileType.rule_yml]
     elif args.item == "scheduled-rule":
-        # A scheduled rule requires a python file, a scheduled_query and a scheduled_rule
-        file_types = ([FileType.rule_py, FileType.scheduled_rule, FileType.query],)
+        files_to_create = ([FileType.rule_py, FileType.scheduled_rule, FileType.query],)
     elif args.item == "helper":
-        file_types = [FileType.helper_py, FileType.helper_yml]
+        files_to_create = [FileType.helper_py, FileType.helper_yml]
     else:
         raise ValueError(f"{args.item} not supported")
 
     create_files_for_item_type(
-        file_types=file_types,
+        file_types=files_to_create,
         target_dir=target_dir_path,
         target_filename=args.file_name,
     )
