@@ -42,7 +42,7 @@ FILE_TYPE_TO_FILE_INFORMATION: Dict[FileType, FileInformation] = {
 def create_files_for_item_type(
     file_types: List[FileType], target_dir: pathlib.Path, target_filename: str
 ) -> None:
-    """Creates"""
+    """Creates skeleton files in the specified directory inferring names from the target filename"""
     for file_type in file_types:
         # Get the sample file to generate the new file
         sample_file_contents = pkgutil.get_data(
