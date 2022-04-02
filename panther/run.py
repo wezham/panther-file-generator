@@ -4,7 +4,10 @@ import pkgutil
 import sys
 from enum import Enum
 from logging import DEBUG, Formatter, StreamHandler, getLogger
-from typing import Dict, List, NamedTuple
+from typing import Callable, Dict, List, NamedTuple, Optional
+
+from panther.file_content_modifiers import (global_helper_yaml, query_yaml,
+                                            rule_yaml, scheduled_rule_yaml)
 
 logger = getLogger(__name__)
 logger.setLevel(DEBUG)
@@ -21,21 +24,32 @@ class FileType(Enum):
     query = "sample_query.yml"
     rule_yml = "sample_rule.yml"
     rule_py = "sample_rule_py.py"
-    scheduled_rule = "sample_schedule_rule.yml"
+    scheduled_rule = "sample_scheduled_rule.yml"
 
 
 class FileInformation(NamedTuple):
     extension: str
     filename_suffix: str = ""
+    file_contents_modifier: Optional[Callable[[dict, str], dict]] = None
 
 
 FILE_TYPE_TO_FILE_INFORMATION: Dict[FileType, FileInformation] = {
     FileType.helper_py: FileInformation(extension="py"),
-    FileType.helper_yml: FileInformation(extension="yml"),
-    FileType.query: FileInformation(extension="yml", filename_suffix="_query"),
-    FileType.rule_yml: FileInformation(extension="yml"),
     FileType.rule_py: FileInformation(extension="py"),
-    FileType.scheduled_rule: FileInformation(extension="yml"),
+    FileType.helper_yml: FileInformation(
+        extension="yml", file_contents_modifier=global_helper_yaml
+    ),
+    FileType.query: FileInformation(
+        extension="yml",
+        filename_suffix="_query",
+        file_contents_modifier=query_yaml,
+    ),
+    FileType.rule_yml: FileInformation(
+        extension="yml", file_contents_modifier=rule_yaml
+    ),
+    FileType.scheduled_rule: FileInformation(
+        extension="yml", file_contents_modifier=scheduled_rule_yaml
+    ),
 }
 
 
@@ -56,11 +70,18 @@ def create_files_for_item_type(
             f"{file_information.extension}"
         )
         dest_file = target_dir.joinpath(file_to_create)
+        file_contents = (
+            file_information.file_contents_modifier(
+                sample_file_contents, target_filename
+            )
+            if file_information.file_contents_modifier
+            else sample_file_contents
+        )
 
         # Write file to destination
         logger.debug(f"Creating python file at {dest_file}")
         with open(dest_file, "w") as f:
-            f.write(sample_file_contents)
+            f.write(file_contents)
 
 
 def main():
@@ -100,7 +121,7 @@ def main():
     if args.item == "rule":
         files_to_create = [FileType.rule_py, FileType.rule_yml]
     elif args.item == "scheduled-rule":
-        files_to_create = ([FileType.rule_py, FileType.scheduled_rule, FileType.query],)
+        files_to_create = [FileType.rule_py, FileType.scheduled_rule, FileType.query]
     elif args.item == "helper":
         files_to_create = [FileType.helper_py, FileType.helper_yml]
     else:
