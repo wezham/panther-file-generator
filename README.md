@@ -7,17 +7,18 @@
 # Usage
 
 ```
-usage: panther-generator [-h] --target-dir [target directory] --item [item-type] --file-name [file-name]
+usage: panther-generate TARGET_DIR [rule,scheduled-rule,helper] FILE_NAME
 
 Generates the boilerplate files for creating panther detections in code
 
+positional arguments:
+  target directory      Specifies the directory you would like to create the files in
+  item-type             What you would like to create [rule,scheduled-rule,helper]
+
 optional arguments:
   -h, --help            show this help message and exit
-  --target-dir [target directory]
-                        Specifies the directory you would like to create the files in
-  --item [item-type]    The type of the of the detection you would like to create [rule,scheduled-rule]
   --file-name [file-name]
-                        name of the item you are creating, for example onepassword_account_access
+                        Name of the item you are creating. For example onepassword_account_access
 ```
 
 # Contributing 
