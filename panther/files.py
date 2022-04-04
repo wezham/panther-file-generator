@@ -55,6 +55,8 @@ def create_files_for_item_type(
     file_types: List[FileType], target_dir: pathlib.Path, target_filename: str
 ) -> None:
     """Creates skeleton files in the specified directory inferring names from the target filename"""
+    dest_file_to_contents: Dict[pathlib.Path, str] = {}
+
     for file_type in file_types:
         # Get the sample file to generate the new file
         sample_file_contents = pkgutil.get_data(
@@ -76,7 +78,10 @@ def create_files_for_item_type(
             else sample_file_contents
         )
 
-        # Write file to destination
-        logger.debug(f"Writing {target_dir}/{dest_file}")
-        with open(dest_file, "w") as f:
+        dest_file_to_contents[dest_file] = file_contents
+
+    # We only want to write the files if all files have been generated succesfully
+    for file_path, file_contents in dest_file_to_contents.items():
+        logger.debug(f"Writing {file_path.absolute()}")
+        with open(file_path, "w") as f:
             f.write(file_contents)
