@@ -7,5 +7,5 @@ Enabled: true
 Runbook: ""
 ScheduledQueries: []
 Tags: []
-Severity: Low
+Severity: Critical
 Tests: []

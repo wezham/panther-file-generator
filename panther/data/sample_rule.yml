@@ -5,7 +5,7 @@ DisplayName: DisplayName
 Enabled: true
 LogTypes: []
 Tags: []
-Severity: Medium
+Severity: Critical
 Description: ""
 Reference: ""
 Runbook: ""
