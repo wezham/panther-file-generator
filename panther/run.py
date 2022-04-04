@@ -6,24 +6,24 @@ from panther.files import FileType, create_files_for_item_type
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generates the boilerplate files for creating panther detections in code"
+        description="Generates the boilerplate files for creating panther detections in code",
+        usage="panther-generate TARGET_DIR [rule,scheduled-rule,helper] FILE_NAME"
     )
     parser.add_argument(
-        "--target-dir",
+        dest="target_dir",
         metavar="target directory",
         type=str,
         nargs="?",
         help="Specifies the directory you would like to create the files in",
-        required=True,
+        default=pathlib.Path().cwd()
     )
     parser.add_argument(
-        "--item",
+        dest="item",
         metavar="item-type",
         type=str,
         nargs="?",
         help="What you would like to create [rule,scheduled-rule,helper]",
         choices=["rule", "scheduled-rule", "helper"],
-        required=True,
     )
 
     parser.add_argument(
@@ -31,7 +31,7 @@ def main():
         metavar="file-name",
         type=str,
         nargs="?",
-        help="name of the item you are creating, for example onepassword_account_access",
+        help="Name of the item you are creating. For example onepassword_account_access",
         required=True,
     )
 
