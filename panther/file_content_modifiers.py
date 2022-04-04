@@ -2,12 +2,20 @@ import yaml
 
 
 def filename_to_query_name(filename: str) -> str:
-    """Converts filename into query name converting snake case convention to query convention"""
+    """Converts filename into query name converting snake case convention to query convention.
+
+    >>> filename_to_query_name("aws_iam_secret_access")
+    "Query.Aws.Iam.Secret.Access"
+    """
     return f"Query.{'.'.join((w.capitalize() for w in filename.split('_')))}"
 
 
 def filename_to_rule_name(filename: str) -> str:
-    """Converts filename into query name converting snake case convention to query convention"""
+    """Converts filename into query name converting snake case convention to query convention.
+
+    >>> filename_to_rule_name("aws_iam_secret_access")
+    "Rule.Aws.Iam.Secret.Access"
+    """
     return f"Rule.{'.'.join((w.capitalize() for w in filename.split('_')))}"
 
 
@@ -37,7 +45,7 @@ def global_helper_yaml(file_yaml: dict, target_filename: str) -> dict:
 
 @yaml_handler
 def query_yaml(file_yaml: dict, target_filename: str) -> dict:
-    """Modifies the query yaml file"""
+    """Modifies the query yaml file."""
 
     file_yaml["QueryName"] = filename_to_query_name(target_filename)
 
