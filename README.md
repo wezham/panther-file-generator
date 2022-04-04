@@ -1,4 +1,10 @@
-Usage:
+# Installation
+
+1. `git clone`
+2. `cd` into package
+3. `pip install .`
+
+# Usage
 
 ```
 usage: panther-generator [-h] --target-dir [target directory] --item [item-type] --file-name [file-name]
@@ -13,3 +19,7 @@ optional arguments:
   --file-name [file-name]
                         name of the item you are creating, for example onepassword_account_access
 ```
+
+# Contributing 
+
+TBC
