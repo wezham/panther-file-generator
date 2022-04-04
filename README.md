@@ -1,8 +1,9 @@
-# Installation
+# About 
 
-1. `git clone`
-2. `cd` into package
-3. `pip install .`
+This tool does the job of:
+
+1. Creating collections of files you will need when creating a rule, scheduled rule or helper file
+2. Linking those files were necessary. For example it links a scheduled rule and scheduled query
 
 # Usage
 
@@ -20,6 +21,12 @@ optional arguments:
   --file-name [file-name]
                         Name of the item you are creating. For example onepassword_account_access
 ```
+
+# Installation
+
+1. `git clone`
+2. `cd` into package
+3. `pip install .`
 
 # Contributing 
 
