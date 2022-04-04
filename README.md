@@ -3,7 +3,21 @@
 This tool does the job of:
 
 1. Creating collections of files you will need when creating a rule, scheduled rule or helper file
-2. Linking those files were necessary. For example it links a scheduled rule and scheduled query
+2. Linking those files were necessary. For example, it links a scheduled rule and scheduled query
+
+An example is provided below
+
+```
+$ panther-generate helper ./global_helpers --file-name accounts                                                                ░▒▓ ✔ │ panther Py │ at 14:27:18 ▓▒░
+2022-04-04 14:27:20,566 - panther.files - DEBUG - Writing /Users/testuser/content/global_helpers/accounts.py
+2022-04-04 14:27:20,566 - panther.files - DEBUG - Writing /Users/testuser/content/global_helpers/accounts.yml
+```
+
+And `accounts.yml` will contain:
+
+```yaml
+Filename: accounts.py
+```
 
 # Usage
 
