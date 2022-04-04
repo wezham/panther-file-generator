@@ -1,6 +1,8 @@
-from panther.file_content_modifiers import (filename_to_python_file,
-                                            filename_to_query_name,
-                                            filename_to_rule_name)
+from panther.file_content_modifiers import (
+    filename_to_query_name,
+    filename_to_rule_name,
+    filename_to_python_file,
+)
 
 
 def test_filename_to_query_name():
