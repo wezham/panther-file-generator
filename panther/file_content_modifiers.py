@@ -27,7 +27,6 @@ def yaml_handler(func):
 
     return handler
 
-
 @yaml_handler
 def global_helper_yaml(file_yaml: dict, target_filename: str) -> dict:
     """Modifies the yaml to link your yaml file to your python file."""
