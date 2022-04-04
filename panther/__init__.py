@@ -7,7 +7,7 @@ def setup_logger():
     logger.setLevel(DEBUG)
 
     handler = StreamHandler(sys.stdout)
-    level = "DEBUG" if os.environ.get("DEBUG_GENERATOR") else "INFO"
+    level = "INFO" if os.environ.get("GENERATOR_LOG_LEVEL") else "DEBUG"
     handler.setLevel(level)
 
     formatter = Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
