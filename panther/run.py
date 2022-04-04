@@ -10,20 +10,21 @@ def main():
         usage="panther-generate TARGET_DIR [rule,scheduled-rule,helper] FILE_NAME"
     )
     parser.add_argument(
-        dest="target_dir",
-        metavar="target directory",
-        type=str,
-        nargs="?",
-        help="Specifies the directory you would like to create the files in",
-        default=pathlib.Path().cwd()
-    )
-    parser.add_argument(
         dest="item",
         metavar="item-type",
         type=str,
         nargs="?",
         help="What you would like to create [rule,scheduled-rule,helper]",
         choices=["rule", "scheduled-rule", "helper"],
+    )
+
+    parser.add_argument(
+        dest="target_dir",
+        metavar="target directory",
+        type=str,
+        nargs="?",
+        help="Specifies the directory you would like to create the files in",
+        default=pathlib.Path().cwd()
     )
 
     parser.add_argument(

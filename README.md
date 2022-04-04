@@ -12,8 +12,8 @@ usage: panther-generate TARGET_DIR [rule,scheduled-rule,helper] FILE_NAME
 Generates the boilerplate files for creating panther detections in code
 
 positional arguments:
-  target directory      Specifies the directory you would like to create the files in
   item-type             What you would like to create [rule,scheduled-rule,helper]
+  target directory      Specifies the directory you would like to create the files in
 
 optional arguments:
   -h, --help            show this help message and exit
