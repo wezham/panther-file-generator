@@ -74,6 +74,6 @@ def create_files_for_item_type(
         )
 
         # Write file to destination
-        logger.debug(f"Creating python file at {dest_file}")
+        logger.debug(f"Creating {file_information.extension} file at {dest_file}")
         with open(dest_file, "w") as f:
             f.write(file_contents)
