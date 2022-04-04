@@ -13,6 +13,7 @@ from panther.file_content_modifiers import (
 
 logger = getLogger(__name__)
 
+
 class FileType(Enum):
     helper_py = "sample_helper.py"
     helper_yml = "sample_helper.yml"
@@ -23,6 +24,8 @@ class FileType(Enum):
 
 
 class FileInformation(NamedTuple):
+    """Represents the information required to create a file in Panther."""
+
     extension: str
     filename_suffix: str = ""
     file_contents_modifier: Optional[Callable[[dict, str], dict]] = None
@@ -67,7 +70,7 @@ def create_files_for_item_type(
         dest_file = target_dir.joinpath(file_to_create)
         file_contents = (
             file_information.file_contents_modifier(
-                sample_file_contents, target_filename
+                sample_file_contents, target_filename  # type: ignore
             )
             if file_information.file_contents_modifier
             else sample_file_contents
