@@ -19,6 +19,7 @@ def test_create_files_for_item_type_successfully_creates_files():
 
         assert path_to_files.joinpath("testing_it.py").exists()
         assert path_to_files.joinpath("testing_it.yml").exists()
+        assert path_to_files.joinpath("testing_it_query.yml").exists()
 
 
 def test_create_files_for_item_type_creates_no_files_if_errors():

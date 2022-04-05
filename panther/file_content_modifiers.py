@@ -27,7 +27,7 @@ def yaml_handler(func):
     """Decorator which handles loading and dumping yaml for callers who read file contents as a
     string."""
 
-    def handler(file_contents: str, target_filename: str):
+    def handler(file_contents: str, target_filename: str) -> str:
         """Handles loading and dumping yaml files for the caller."""
         file_as_yaml = yaml.safe_load(file_contents)
         result = func(file_as_yaml, target_filename)
